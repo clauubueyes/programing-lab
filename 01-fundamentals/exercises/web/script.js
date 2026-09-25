@@ -1,7 +1,7 @@
 const inputName = document.getElementById("fname");
 const inputBirthdate= document.getElementById("birthdate");
 const dataForm = document.getElementById("ageCalculatorForm");
-
+const ageResult = document.getElementById("age");
 
 dataForm.addEventListener("submit", function(event){
     event.preventDefault();
@@ -23,5 +23,5 @@ dataForm.addEventListener("submit", function(event){
     if( (currentMonth < birthMonth) || ((currentMonth === birthMonth) && (currentDay < birthDay))){
         age = age-1;
     }
-    console.log(age);
+    ageResult.textContent = `Hello ${name}! You are ${age} years old.`;
 });
