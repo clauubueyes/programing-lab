@@ -18,11 +18,10 @@ dataForm.addEventListener("submit", function(event){
     const birthDay = birthdate.getDate();
     const birthMonth = birthdate.getMonth() + 1;
 
-    console.log(birthYear);
-    console.log(birthMonth);
-    console.log(birthDay);
-    console.log(birthdate);
-    
     const name = inputName.value; 
-    console.log(name);
+    let age = currentYear - birthYear;
+    if( (currentMonth < birthMonth) || ((currentMonth === birthMonth) && (currentDay < birthDay))){
+        age = age-1;
+    }
+    console.log(age);
 });
