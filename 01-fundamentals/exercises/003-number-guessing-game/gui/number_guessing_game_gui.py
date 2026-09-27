@@ -27,7 +27,18 @@ user_input.grid(row=2, column=0)
 count = 0
 def check_guess():
     global count
-    user_number = int(user_input.get())
+    try: 
+        user_number = int(user_input.get())
+             
+    except ValueError: 
+        warning_label.config(text="You can only enter an integer number. Try again.")
+        return     
+    
+    if user_number  not in range(1,101):
+        warning_label.config(text="Enter a number between 1 and 100.")
+        return
+    
+    warning_label.config(text="")
     count += 1 
 
     if count == 5 and user_number != machine_number:
@@ -41,7 +52,6 @@ def check_guess():
         else: 
             guess_boton.config(state="disabled")
             hint_label.config(text="You win!")
-
     attempts_label.config(text=f"Attempts left: {5-count}")
         
 guess_boton = tk.Button(root, text="Guess", command=check_guess)
@@ -50,7 +60,10 @@ guess_boton.grid(row=3, column=0)
 hint_label = tk.Label(root, text="")
 hint_label.grid(row=4, column=0)
 
+warning_label = tk.Label(root)
+warning_label.grid(row=5, column=0)
+
 attempts_label = tk.Label(root, text="Attempts left: 5")
-attempts_label.grid(row=5, column=0)
+attempts_label.grid(row=6, column=0)
 
 root.mainloop()
