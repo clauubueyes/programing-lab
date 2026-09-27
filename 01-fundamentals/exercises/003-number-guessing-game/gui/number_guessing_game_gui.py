@@ -71,16 +71,17 @@ def check_guess():
         else: 
             guess_boton.config(state="disabled")
             hint_label.config(text="You win!")
+    user_input.delete(0,tk.END)
     attempts_label.config(text=f"Attempts left: {5-count}")
         
 guess_boton = tk.Button(game_frame, width=10, bg="#6ac6fc", fg="#0a141a", text="Guess", command=check_guess)
 guess_boton.grid(row=3, column=0, pady=(10,0))
 
 hint_label = tk.Label(game_frame, text="")
-hint_label.grid(row=4, column=0, pady=(0,0), sticky="w")
+hint_label.grid(row=4, column=0, pady=(0,0))
 
 warning_label = tk.Label(game_frame)
-warning_label.grid(row=5, column=0, pady=(0,0), sticky="w")
+warning_label.grid(row=5, column=0, pady=(0,0))
 
 attempts_label = tk.Label( game_frame, text="Attempts left: 5")
 attempts_label.grid(row=6, column=0, pady=(0,0))
