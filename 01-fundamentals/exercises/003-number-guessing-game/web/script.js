@@ -1,1 +1,2 @@
-console.log("Conexion validada");
+const inputNumber = document.getElementById("input-number");
+console.log(inputNumber);
