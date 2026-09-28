@@ -9,8 +9,6 @@ function randomNumber(min,max){
 }
 const machineNumber = randomNumber(1,100);
 
-hint.classList.remove("warning", "success", "lose");
-
 let count = 0;
 
 dataForm.addEventListener("submit", function(event){
@@ -18,8 +16,20 @@ dataForm.addEventListener("submit", function(event){
 
     const userNumber = parseInt(inputNumber.value);
     
+    hint.classList.remove("warning", "success", "lose");
+   if (isNaN(userNumber)) {
+        hint.classList.add("lose")
+        hint.textContent=`The value is not a valid number.`;
+        return;
+    }
+    if (userNumber < 1 || userNumber > 100) {
+        hint.classList.add("lose")
+        hint.textContent=`The number ${userNumber} is outside the allowed range (1-100).`;
+        return;
+    }
+    
     count = count + 1; 
-    hint.classList.remove("warning");
+    
     if(count === 5 && userNumber !== machineNumber){
         hint.textContent=`You lose! The number was ${machineNumber}`;
         hint.classList.add("lose");
