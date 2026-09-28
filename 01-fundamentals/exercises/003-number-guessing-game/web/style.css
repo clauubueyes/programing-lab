@@ -6,8 +6,8 @@ body{
 }
 
 .number-form{
-    background: #f9f3f3;
-    padding: 50px 10px; 
-    border: 1px solid #ffffff;
-    border-radius: 5px;
+  background: #b9b9b9;
+  padding: 100px 50px; 
+  border: 3px solid #005f58;
+  border-radius: 5px;
 }
