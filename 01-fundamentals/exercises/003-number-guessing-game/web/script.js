@@ -2,6 +2,8 @@ const inputNumber = document.getElementById("input-number");
 const dataForm = document.getElementById("numberGuessForm")
 const submitBotton = document.getElementById("submit-buton");
 const hint = document.getElementById("hint")
+const attempts = document.getElementById("attempts");
+
 function randomNumber(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -16,7 +18,7 @@ dataForm.addEventListener("submit", function(event){
     count = count + 1; 
 
     if(count === 5 && userNumber !== machineNumber){
-        console.log(`You lose! The number was ${machineNumber}`);
+         hint.textContent=`You lose! The number was ${machineNumber}`;
         submitBotton.disabled = true;
     }
     else{
@@ -31,7 +33,5 @@ dataForm.addEventListener("submit", function(event){
             submitBotton.disabled = true;
         }
     }
-    
-    console.log(`You have ${5 - count} attempts`);
-        
+   attempts.textContent=` ${5 - count}`;
 });
