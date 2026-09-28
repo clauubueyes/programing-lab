@@ -11,4 +11,14 @@ dataForm.addEventListener("submit", function(event){
 
     const userNumber = parseInt(inputNumber.value);
     console.log(typeof(userNumber));
+
+    if(userNumber < machineNumber){
+        console.log("Too Low!");
+    }
+    else if (userNumber > machineNumber){
+        console.log("Too High!");
+    }
+    else{
+        console.log("You Win!");
+    }
 });
