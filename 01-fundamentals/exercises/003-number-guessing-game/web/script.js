@@ -1,7 +1,7 @@
 const inputNumber = document.getElementById("input-number");
 const dataForm = document.getElementById("numberGuessForm")
 const submitBotton = document.getElementById("submit-buton");
-
+const hint = document.getElementById("hint")
 function randomNumber(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -11,6 +11,8 @@ dataForm.addEventListener("submit", function(event){
     event.preventDefault();
 
     const userNumber = parseInt(inputNumber.value);
+    
+
     count = count + 1; 
 
     if(count === 5 && userNumber !== machineNumber){
@@ -19,13 +21,13 @@ dataForm.addEventListener("submit", function(event){
     }
     else{
         if (userNumber < machineNumber){
-            console.log("Too Low!");
+            hint.textContent = `Too Low!`;
         }
         else if (userNumber > machineNumber){
-            console.log("Too High!");
+            hint.textContent=`Too High!`
         }
         else{
-            console.log("You Win!");
+            hint.textContent=`You Win!`
             submitBotton.disabled = true;
         }
     }
