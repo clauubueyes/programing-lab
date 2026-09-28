@@ -8,4 +8,7 @@ const machineNumber = randomNumber(1,100);
 
 dataForm.addEventListener("submit", function(event){
     event.preventDefault();
+
+    const userNumber = parseInt(inputNumber.value);
+    console.log(typeof(userNumber));
 });
