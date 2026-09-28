@@ -1,24 +1,35 @@
 const inputNumber = document.getElementById("input-number");
 const dataForm = document.getElementById("numberGuessForm")
+const submitBotton = document.getElementById("submit-buton");
 
 function randomNumber(min,max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 const machineNumber = randomNumber(1,100);
-
+ let count = 0;
 dataForm.addEventListener("submit", function(event){
     event.preventDefault();
 
     const userNumber = parseInt(inputNumber.value);
-    console.log(typeof(userNumber));
+    count = count + 1; 
 
-    if(userNumber < machineNumber){
-        console.log("Too Low!");
-    }
-    else if (userNumber > machineNumber){
-        console.log("Too High!");
+    if(count === 5 && userNumber !== machineNumber){
+        console.log(`You lose! The number was ${machineNumber}`);
+        submitBotton.disabled = true;
     }
     else{
-        console.log("You Win!");
+        if (userNumber < machineNumber){
+            console.log("Too Low!");
+        }
+        else if (userNumber > machineNumber){
+            console.log("Too High!");
+        }
+        else{
+            console.log("You Win!");
+            submitBotton.disabled = true;
+        }
     }
+    
+    console.log(`You have ${5 - count} attempts`);
+        
 });
