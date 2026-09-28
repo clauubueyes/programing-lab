@@ -62,7 +62,24 @@ form {
   color: black;
   cursor: not-allowed;
 }
-#hint {
-  color: #b40d0d;
-  font-weight: 500;
+.lose {
+  color: #ff0000;
+  font-size: 20px;
+}
+.warning {
+  color: #ffbf0c;
+  font-size: 20px;
+}
+.success{
+  color: #1bff02; 
+  font-size: 25px;
+}
+
+.success, .warning, .lose{
+  font-weight: 700;
+  text-shadow:
+    1.2px 1.2px 0 black,
+    -1.2px -1.2px 0 black,
+    -1.2px 1.2px 0 black,
+    1.2px -1.2px 0 black;
 }
