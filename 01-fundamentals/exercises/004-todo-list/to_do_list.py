@@ -1,12 +1,9 @@
 
 user_task = []
-user_input1 = input("Enter a task: ")
-user_input2 = input("Enter a task: ")
-user_input3 = input("Enter a task: ")
 
-user_task.append(user_input1)
-user_task.append(user_input2)
-user_task.append(user_input3)
+for i in range(3):
+    user_input = input("Enter a task: ")
+    user_task.append(user_input)
 
 print("Your tasks:")
 
