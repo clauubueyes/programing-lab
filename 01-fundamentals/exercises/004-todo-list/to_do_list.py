@@ -1,9 +1,9 @@
 
 def show_tasks(user_tasks):
     for index, task in enumerate(user_tasks, start=1):
-        if task['completed'] == True:
+        if task['completed']:
             print(f"\t{index}. [x] {task['title']}")
-        elif task['completed'] == False:
+        else:
             print(f"\t{index}. [] {task['title']}")
 
 user_tasks = []
