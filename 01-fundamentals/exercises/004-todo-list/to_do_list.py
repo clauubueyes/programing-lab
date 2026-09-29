@@ -21,9 +21,21 @@ select_task = int(input("Enter the task number to complete: "))
 task_index = select_task - 1
 user_tasks[task_index]['completed'] = True
 
+
+
 for index, task in enumerate(user_tasks, start= 1):
     if task['completed'] == True:
         print(f"\t{index}. [x] {task['title']}")
     elif task['completed'] == False:
         print(f"\t{index}. [] {task['title']}")
 
+pop_task = int(input("Enter the task number to delete: "))
+pop_index = pop_task - 1
+user_tasks.pop(pop_index)
+print("Your Current Tasks:")
+for index, task in enumerate(user_tasks, start=1):
+    if task['completed'] == True:
+        print(f"\t{index}. [x] {task['title']}")
+    elif task['completed'] == False:
+        print(f"\t{index}. [] {task['title']}")
+    
