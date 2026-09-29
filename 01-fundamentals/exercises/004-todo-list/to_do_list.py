@@ -1,8 +1,13 @@
 
 user_task = []
 
-for i in range(3):
+print("Enter 'q' to quit")
+
+while True: 
     user_input = input("Enter a task: ")
+    
+    if  user_input == 'q':
+        break
     user_task.append(user_input)
 
 print("Your tasks:")
