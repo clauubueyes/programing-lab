@@ -14,5 +14,5 @@ while True:
 
 print("Your tasks:")
 
-for task in user_tasks: 
-    print(f"\t[] {task['title']}")
+for index, task in enumerate(user_tasks, start= 1): 
+    print(f"\t{index}. [] {task['title']}")
