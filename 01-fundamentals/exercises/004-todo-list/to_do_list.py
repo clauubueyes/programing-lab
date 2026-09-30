@@ -4,6 +4,9 @@ def add_task(title, tasks):
     task["completed"] = False
     tasks.append(task)
 
+def complete_task(select_index, tasks):
+    index = select_index - 1
+    tasks[index]['completed'] = True
 
 def show_tasks(user_tasks):
     for index, task in enumerate(user_tasks, start=1):
@@ -36,15 +39,14 @@ while True:
             case 2:
                 print("Complete task")
                 if not user_tasks:
-                    print("There are no task.")
+                    print("There are no tasks.")
                     continue
                 show_tasks(user_tasks)
                 select_task = int(input("Enter the task number to complete: "))
                 if select_task not in range(1, len(user_tasks) + 1):
                     print("That task does not exist")
                     continue
-                task_index = select_task - 1
-                user_tasks[task_index]['completed'] = True
+                complete_task(select_task, user_tasks)
             case 3:
                 print("Delete task")
                 if not user_tasks:
