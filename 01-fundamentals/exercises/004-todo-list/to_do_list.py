@@ -53,7 +53,7 @@ while True:
                 select_task = int(input("Enter the task number to complete: "))
 
                 if not is_valid_task_number(select_task, user_tasks):
-                    print("That number is not an option")
+                    print("That task does not exist.")
                     continue
                 complete_task(select_task, user_tasks)
 
@@ -73,7 +73,7 @@ while True:
                 print("Show tasks")
                 print("Your tasks:")
                 if not user_tasks:
-                    print("There are no task.")
+                    print("There are no tasks.")
                     continue
                 show_tasks(user_tasks)
             case 5:
