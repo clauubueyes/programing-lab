@@ -8,6 +8,10 @@ def complete_task(select_index, tasks):
     index = select_index - 1
     tasks[index]['completed'] = True
 
+def delete_task(index, tasks):
+    pop_index = index - 1
+    tasks.pop(pop_index)   
+
 def show_tasks(user_tasks):
     for index, task in enumerate(user_tasks, start=1):
         if task['completed']:
@@ -50,15 +54,14 @@ while True:
             case 3:
                 print("Delete task")
                 if not user_tasks:
-                    print("There are no task")
+                    print("There are no tasks.")
                     continue
                 show_tasks(user_tasks)
                 pop_task = int(input("Enter the task number to delete: "))
                 if pop_task not in range(1, len(user_tasks) + 1):
                     print("That task does not exist.")
                     continue
-                pop_index = pop_task - 1
-                user_tasks.pop(pop_index)
+                delete_task(pop_task, user_tasks)
                 
             case 4:
                 print("Show tasks")
