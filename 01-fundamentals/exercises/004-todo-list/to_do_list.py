@@ -19,6 +19,10 @@ def show_tasks(user_tasks):
         else:
             print(f"\t{index}. [] {task['title']}")
 
+
+def is_valid_task_number(number, tasks):
+    return number in range(1, len(tasks) + 1)
+
 user_tasks = []
 print("------ TO-DO LIST ------\n")
 
@@ -47,10 +51,12 @@ while True:
                     continue
                 show_tasks(user_tasks)
                 select_task = int(input("Enter the task number to complete: "))
-                if select_task not in range(1, len(user_tasks) + 1):
-                    print("That task does not exist")
+
+                if not is_valid_task_number(select_task, user_tasks):
+                    print("That number is not an option")
                     continue
                 complete_task(select_task, user_tasks)
+
             case 3:
                 print("Delete task")
                 if not user_tasks:
@@ -58,7 +64,7 @@ while True:
                     continue
                 show_tasks(user_tasks)
                 pop_task = int(input("Enter the task number to delete: "))
-                if pop_task not in range(1, len(user_tasks) + 1):
+                if not is_valid_task_number(pop_task, user_tasks):
                     print("That task does not exist.")
                     continue
                 delete_task(pop_task, user_tasks)
