@@ -1,3 +1,9 @@
+def add_task(title, tasks):
+    task = {}
+    task["title"] = title
+    task["completed"] = False
+    tasks.append(task)
+
 
 def show_tasks(user_tasks):
     for index, task in enumerate(user_tasks, start=1):
@@ -25,10 +31,8 @@ while True:
             case 1: 
                 print("Add task")
                 user_input = input("Enter a task: ")
-                task = {}
-                task["title"] = user_input 
-                task["completed"] = False
-                user_tasks.append(task)
+                add_task(user_input, user_tasks)
+                
             case 2:
                 print("Complete task")
                 if not user_tasks:
