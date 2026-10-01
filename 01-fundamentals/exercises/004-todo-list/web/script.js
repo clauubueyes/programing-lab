@@ -13,8 +13,14 @@ while (true){
 }
 
 const completeIndex = Number(prompt("Enter the number of the task to complete: "));
-const indexTask = completeIndex - 1; 
-tasks[indexTask].completed = true;
+const indexTask = completeIndex - 1;
+
+if (indexTask < 0 || indexTask >= tasks.length || Number.isNaN(completeIndex)) {
+    console.log("That task does not exist.");
+}else{
+    tasks[indexTask].completed = true;
+
+}
 
 for (let i=0; i<tasks.length ; i++){
     let res = "";
