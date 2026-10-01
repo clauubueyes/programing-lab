@@ -32,6 +32,10 @@ function  completeTask(indexInput, tasks){
     const index = indexInput - 1 ; 
     tasks[index].completed = true;
 }
+function deleteTask(indexInput, tasks){
+    const index = indexInput - 1;
+    tasks.splice(index, 1);
+}
 
 const completeIndex = Number(prompt("Enter the number of the task to complete: "));
 if (isValidTask(tasks, completeIndex )) {
@@ -43,8 +47,7 @@ showTasks(tasks);
 
 const popIndex = Number(prompt("Enter the number of the task to delete: "));
 if (isValidTask(tasks, popIndex )) {
-    const popTask = popIndex - 1;
-    tasks.splice(popTask, 1);
+    deleteTask(popIndex, tasks);
 }else{
     console.log("That task does not exist.");
 }
