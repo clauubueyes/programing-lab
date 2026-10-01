@@ -1,7 +1,26 @@
-const form = document.getElementById("add-task");;
+const form = document.getElementById("add-task");
 const taskInput = document.getElementById("title-task");
 const taskList = document.getElementById("tasks");
 
+const tasks = [];
+function addTask(tasks, taskTitle){
+        const task = {
+            title: taskTitle,
+            completed: false
+        };
+        tasks.push(task);
+    }
+
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+
+    const task = taskInput.value; 
+
+    
+    addTask(tasks, task);
+    console.log(tasks);
+});
+{/*
 const tasks = [];
 function addTask(tasks, taskTitle){
     const task = {
@@ -10,6 +29,7 @@ function addTask(tasks, taskTitle){
     };
     tasks.push(task);
 }
+
 
 function showTasks(tasks){
     for (let i=0; i<tasks.length ; i++){
@@ -75,3 +95,5 @@ while(running){
             break;     
     }
 }
+
+*/}
