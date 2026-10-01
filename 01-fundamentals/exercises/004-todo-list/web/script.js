@@ -1,15 +1,18 @@
 const tasks = [];
-
+function addTask(tasks, taskTitle){
+    const task = {
+        title: taskTitle,
+        completed: false
+    };
+    tasks.push(task);
+}
 while (true){
     const taskEnter = prompt("Enter a task: ");
     if( taskEnter === "q"){
         break;
     }
-    const tasksUser = {
-        title: taskEnter,
-        completed: false
-    };
-    tasks.push(tasksUser);
+    addTask(tasks, taskEnter);
+    
 }
 function showTasks(tasks){
     for (let i=0; i<tasks.length ; i++){
