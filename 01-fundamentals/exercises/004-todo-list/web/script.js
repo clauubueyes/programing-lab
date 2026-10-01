@@ -12,7 +12,7 @@ while (true){
     tasks.push(tasksUser);
 }
 
-for (const task of tasks){
-    const res = `Title: ${task.title}\nCompleted: ${task.completed}`;
+for (let i=0; i<tasks.length ; i++){
+    const res = `${i + 1}. [] ${tasks[i].title}`;
     console.log(res); 
 }
