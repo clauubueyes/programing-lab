@@ -18,7 +18,10 @@ form.addEventListener("submit", function(event){
 
     
     addTask(tasks, task);
-    console.log(tasks);
+    const li = document.createElement("li");
+    li.textContent= task;
+    taskList.append(li);
+    console.log(taskList);
 });
 {/*
 const tasks = [];
