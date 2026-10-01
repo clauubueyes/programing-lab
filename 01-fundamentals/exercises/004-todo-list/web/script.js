@@ -13,6 +13,11 @@ while (true){
 }
 
 for (let i=0; i<tasks.length ; i++){
-    const res = `${i + 1}. [] ${tasks[i].title}`;
+    let res = "";
+    if(tasks[i].completed){
+        res = `${i + 1}. [x] ${tasks[i].title}`;
+    }else{
+        res = `${i + 1}. [ ] ${tasks[i].title}`;
+    } 
     console.log(res); 
 }
