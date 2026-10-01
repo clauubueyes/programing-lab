@@ -12,6 +12,10 @@ while (true){
     tasks.push(tasksUser);
 }
 
+const completeIndex = Number(prompt("Enter the number of the task to complete: "));
+const indexTask = completeIndex - 1; 
+tasks[indexTask].completed = true;
+
 for (let i=0; i<tasks.length ; i++){
     let res = "";
     if(tasks[i].completed){
