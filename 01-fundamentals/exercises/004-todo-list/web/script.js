@@ -31,3 +31,21 @@ for (let i=0; i<tasks.length ; i++){
     } 
     console.log(res); 
 }
+
+const popIndex = Number(prompt("Enter the number of the task to delete: "));
+const popTask = popIndex - 1; 
+if (popTask < 0 || popTask >= tasks.length || Number.isNaN(popIndex)) {
+    console.log("That task does not exist.");
+}else{
+    tasks.splice(popTask, 1);
+}
+
+for(let i=0; i<tasks.length; i++){
+    let res = "";
+    if(tasks[i].completed){
+        res = `${i + 1}. [x] ${tasks[i].title}`;
+    }else{
+        res = `${i + 1}. [ ] ${tasks[i].title}`;
+    } 
+    console.log(res); 
+}
