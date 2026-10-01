@@ -21,7 +21,7 @@ form.addEventListener("submit", function(event){
     const li = document.createElement("li");
     li.textContent= task;
     taskList.append(li);
-    console.log(taskList);
+    taskInput.value = "";
 });
 {/*
 const tasks = [];
