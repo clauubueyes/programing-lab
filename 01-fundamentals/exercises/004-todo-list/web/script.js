@@ -1,3 +1,7 @@
+const form = document.getElementById("add-task");;
+const taskInput = document.getElementById("title-task");
+const taskList = document.getElementById("tasks");
+
 const tasks = [];
 function addTask(tasks, taskTitle){
     const task = {
