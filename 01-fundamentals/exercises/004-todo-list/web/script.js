@@ -28,10 +28,14 @@ function isValidTask(tasks, indexInput){
     const index = indexInput - 1 ;
     return !(index < 0 ||index >= tasks.length || Number.isNaN(index))
 }
+function  completeTask(indexInput, tasks){
+    const index = indexInput - 1 ; 
+    tasks[index].completed = true;
+}
+
 const completeIndex = Number(prompt("Enter the number of the task to complete: "));
 if (isValidTask(tasks, completeIndex )) {
-    const indexTask = completeIndex - 1 ; 
-    tasks[indexTask].completed = true;
+    completeTask(completeIndex, tasks);
 }else{
     console.log("That task does not exist.");
 }
