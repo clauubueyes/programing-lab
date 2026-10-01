@@ -6,14 +6,7 @@ function addTask(tasks, taskTitle){
     };
     tasks.push(task);
 }
-while (true){
-    const taskEnter = prompt("Enter a task: ");
-    if( taskEnter === "q"){
-        break;
-    }
-    addTask(tasks, taskEnter);
-    
-}
+
 function showTasks(tasks){
     for (let i=0; i<tasks.length ; i++){
     let res = "";
@@ -26,7 +19,6 @@ function showTasks(tasks){
     console.log(res); 
     }
 }
-
 function isValidTask(tasks, indexInput){
     const index = indexInput - 1 ;
     return !(index < 0 ||index >= tasks.length || Number.isNaN(index))
@@ -40,19 +32,42 @@ function deleteTask(indexInput, tasks){
     tasks.splice(index, 1);
 }
 
-const completeIndex = Number(prompt("Enter the number of the task to complete: "));
-if (isValidTask(tasks, completeIndex )) {
-    completeTask(completeIndex, tasks);
-}else{
-    console.log("That task does not exist.");
+let running = true; 
+while(running){
+    console.log("1. Add task\n2. Show tasks\n3. Complete task\n4. Delete task\n5. Exit");
+    const option = Number(prompt("Enter an option: "));
+    switch ( option){
+        case 1: 
+            const taskEnter = prompt("Enter a task: ");
+            addTask(tasks, taskEnter);
+            break;
+        case 2: 
+            showTasks(tasks);
+            break;
+        case 3: 
+            const completeIndex = Number(prompt("Enter the number of the task to complete: "));
+            if (isValidTask(tasks, completeIndex )) {
+                completeTask(completeIndex, tasks);
+            }else{
+                console.log("That task does not exist.");
+            }
+            showTasks(tasks);
+            break;
+        case 4: 
+            const popIndex = Number(prompt("Enter the number of the task to delete: "));
+            if (isValidTask(tasks, popIndex )) {
+                deleteTask(popIndex, tasks);
+            }else{
+                console.log("That task does not exist.");
+            }
+            showTasks(tasks);
+            break;
+        case 5: 
+            console.log("Bye!");
+            running = false;
+            break;     
+        default: 
+            console.log("Invalid option");  
+            break;     
+    }
 }
-showTasks(tasks);
-
-const popIndex = Number(prompt("Enter the number of the task to delete: "));
-if (isValidTask(tasks, popIndex )) {
-    deleteTask(popIndex, tasks);
-}else{
-    console.log("That task does not exist.");
-}
-
-showTasks(tasks);
