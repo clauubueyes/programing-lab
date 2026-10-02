@@ -4,25 +4,39 @@ const taskList = document.getElementById("tasks");
 
 const tasks = [];
 function addTask(tasks, taskTitle){
-        const task = {
-            title: taskTitle,
-            completed: false
-        };
-        tasks.push(task);
-    }
+    const task = {
+        title: taskTitle,
+        completed: false
+    };
+    tasks.push(task);
+    return task;
+}
 
 form.addEventListener("submit", function(event){
     event.preventDefault();
 
     const task = taskInput.value.trim(); 
-  
+    
     if (task ===""){
         console.log("You can not enter a empty task");
     }
     else{
-        addTask(tasks, task);
+        const newTask = addTask(tasks, task);
         const li = document.createElement("li");
-        li.textContent= task;
+        const span = document.createElement("span");
+        span.textContent = task;
+        
+        const completeButton = document.createElement("button");
+
+        completeButton.textContent = "complete";
+
+        completeButton.addEventListener("click", function(){
+            newTask.completed = true;
+            span.textContent = `[x] ${newTask.title}`;
+            console.log(tasks);
+        });
+        li.append(span);
+        li.append(completeButton);
         taskList.append(li);
         taskInput.value = "";
     }
