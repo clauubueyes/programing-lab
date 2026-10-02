@@ -14,14 +14,18 @@ function addTask(tasks, taskTitle){
 form.addEventListener("submit", function(event){
     event.preventDefault();
 
-    const task = taskInput.value; 
-
-    
-    addTask(tasks, task);
-    const li = document.createElement("li");
-    li.textContent= task;
-    taskList.append(li);
-    taskInput.value = "";
+    const task = taskInput.value.trim(); 
+  
+    if (task ===""){
+        console.log("You can not enter a empty task");
+    }
+    else{
+        addTask(tasks, task);
+        const li = document.createElement("li");
+        li.textContent= task;
+        taskList.append(li);
+        taskInput.value = "";
+    }
 });
 {/*
 const tasks = [];
