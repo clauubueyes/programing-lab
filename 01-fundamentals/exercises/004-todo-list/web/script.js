@@ -27,7 +27,6 @@ form.addEventListener("submit", function(event){
         span.textContent = task;
         
         const completeButton = document.createElement("button");
-
         completeButton.textContent = "complete";
 
         completeButton.addEventListener("click", function(){
@@ -35,8 +34,17 @@ form.addEventListener("submit", function(event){
             span.textContent = `[x] ${newTask.title}`;
             console.log(tasks);
         });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "delete";
+        deleteButton.addEventListener("click", function(){
+            const index = tasks.indexOf(newTask);
+            tasks.splice(index, 1);
+            li.remove();
+        });
         li.append(span);
         li.append(completeButton);
+        li.append(deleteButton);
         taskList.append(li);
         taskInput.value = "";
     }
