@@ -11,6 +11,31 @@ function addTask(tasks, taskTitle){
     tasks.push(task);
     return task;
 }
+function createTaskElement(newTask) {
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    span.textContent = `[ ] ${newTask.title}`;
+    li.append(span);
+    return {
+        li: li,
+        span: span
+    };
+}
+function toggleTask(newTask) {
+    newTask.completed = !newTask.completed;
+}
+function updateTaskElement(newTask, span) {
+    if(newTask.completed){
+        span.textContent = `[x] ${newTask.title}`;
+    }
+    else{
+        span.textContent = `[ ] ${newTask.title}`;
+    }
+}
+function deleteTask(tasks, newTask) {
+    const index = tasks.indexOf(newTask);
+    tasks.splice(index, 1);
+}
 form.addEventListener("submit", function(event){
     event.preventDefault();
 
@@ -21,41 +46,23 @@ form.addEventListener("submit", function(event){
     }
     else{
         const newTask = addTask(tasks, task);
-        function createTaskElement(newTask) {
-            const li = document.createElement("li");
-            const span = document.createElement("span");
-            span.textContent = `[ ] ${newTask.title}`;
-            li.append(span);
-            return {
-                li: li,
-                span: span
-            };
-        }
-        
         const {li, span} = createTaskElement(newTask);
         
         const completeButton = document.createElement("button");
         completeButton.textContent = "complete";
 
         completeButton.addEventListener("click", function(){
-            newTask.completed = !newTask.completed;
-            console.log(newTask.completed);
-            if(newTask.completed){
-                span.textContent = `[x] ${newTask.title}`;
-            }
-            else{
-                span.textContent = `[ ] ${newTask.title}`;
-            }
+            toggleTask(newTask);
+            updateTaskElement(newTask, span);
         });
 
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "delete";
         deleteButton.addEventListener("click", function(){
-            const index = tasks.indexOf(newTask);
-            tasks.splice(index, 1);
+           deleteTask(tasks, newTask);
             li.remove();
         });
-        li.append(span);
+        
         li.append(completeButton);
         li.append(deleteButton);
         taskList.append(li);
