@@ -11,7 +11,6 @@ function addTask(tasks, taskTitle){
     tasks.push(task);
     return task;
 }
-
 form.addEventListener("submit", function(event){
     event.preventDefault();
 
@@ -30,9 +29,14 @@ form.addEventListener("submit", function(event){
         completeButton.textContent = "complete";
 
         completeButton.addEventListener("click", function(){
-            newTask.completed = true;
-            span.textContent = `[x] ${newTask.title}`;
-            console.log(tasks);
+            newTask.completed = !newTask.completed;
+            console.log(newTask.completed);
+            if(newTask.completed){
+                span.textContent = `[x] ${newTask.title}`;
+            }
+            else{
+                span.textContent = `[ ] ${newTask.title}`;
+            }
         });
 
         const deleteButton = document.createElement("button");
