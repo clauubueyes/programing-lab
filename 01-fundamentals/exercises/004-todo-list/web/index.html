@@ -4,21 +4,29 @@
         <meta charset="utf-8">
         <title>To-Do List</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <h1>To-Do List</h1>
         <p>Manage all your task!</p>
-
-        <form id="add-task">
-            <label for="title-task">Add Task</label>
-            <input type="text" name="title-task" id="title-task" placeholder="Type any title ... ">
-            <button type="submit">Add task</button>
-        </form>
-        <p id="error"></p>
-        <ul id="tasks">
-
-        </ul>
+        
+        <div class = "tasks-container"> 
+            <form id="add-task">
+                <label for="title-task">Add Task</label>
+                <div class="add-task">
+                    <input type="text" name="title-task" id="title-task" placeholder="Type any title ... ">
+                    <button class="add-task-button" type="submit">Add task</button>
+                </div>
+            </form>
+            <p id="error"></p>
+            <div class="tasks"> 
+                <ul id="tasks">
+                </ul>
+            </div>
+        </div>
         <script src="script.js"></script>
     </body>
 

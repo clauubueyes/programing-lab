@@ -39,6 +39,7 @@ function deleteTask(tasks, newTask) {
 }
 function createCompleteButton(newTask, span) {
     const completeButton = document.createElement("button");
+    completeButton.classList.add("complete-button");
     completeButton.textContent = "complete";
     completeButton.addEventListener("click", function(){
         toggleTask(newTask);
@@ -48,6 +49,7 @@ function createCompleteButton(newTask, span) {
 }
 function createDeleteButton(tasks, newTask, li){
     const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
     deleteButton.textContent = "delete";
     deleteButton.addEventListener("click", function(){
         deleteTask(tasks, newTask);
@@ -70,9 +72,11 @@ form.addEventListener("submit", function(event){
         
         const completeButton = createCompleteButton(newTask, span);
         const deleteButton = createDeleteButton(tasks, newTask, li);
+        const actions = document.createElement("div");
         
-        li.append(completeButton);
-        li.append(deleteButton);
+        actions.append(completeButton, deleteButton);
+        actions.classList.add("actions-buttons");
+        li.append(actions);
         taskList.append(li);
         taskInput.value = "";
     }
