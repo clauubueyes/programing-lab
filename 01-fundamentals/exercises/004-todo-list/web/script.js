@@ -1,6 +1,7 @@
 const form = document.getElementById("add-task");
 const taskInput = document.getElementById("title-task");
 const taskList = document.getElementById("tasks");
+const errorMessage = document.getElementById("error");
 
 const tasks = [];
 function addTask(tasks, taskTitle){
@@ -60,9 +61,10 @@ form.addEventListener("submit", function(event){
     const task = taskInput.value.trim(); 
     
     if (task ===""){
-        console.log("You can not enter a empty task");
+        errorMessage.textContent="You cannot enter an empty task.";
     }
     else{
+        errorMessage.textContent="";
         const newTask = addTask(tasks, task);
         const {li, span} = createTaskElement(newTask);
         
