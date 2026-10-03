@@ -21,9 +21,18 @@ form.addEventListener("submit", function(event){
     }
     else{
         const newTask = addTask(tasks, task);
-        const li = document.createElement("li");
-        const span = document.createElement("span");
-        span.textContent = `[ ] ${task}`;
+        function createTaskElement(newTask) {
+            const li = document.createElement("li");
+            const span = document.createElement("span");
+            span.textContent = `[ ] ${newTask.title}`;
+            li.append(span);
+            return {
+                li: li,
+                span: span
+            };
+        }
+        
+        const {li, span} = createTaskElement(newTask);
         
         const completeButton = document.createElement("button");
         completeButton.textContent = "complete";
