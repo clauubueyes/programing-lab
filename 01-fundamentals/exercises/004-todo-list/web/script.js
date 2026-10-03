@@ -36,6 +36,24 @@ function deleteTask(tasks, newTask) {
     const index = tasks.indexOf(newTask);
     tasks.splice(index, 1);
 }
+function createCompleteButton(newTask, span) {
+    const completeButton = document.createElement("button");
+    completeButton.textContent = "complete";
+    completeButton.addEventListener("click", function(){
+        toggleTask(newTask);
+        updateTaskElement(newTask, span);
+    });
+    return completeButton;
+}
+function createDeleteButton(tasks, newTask, li){
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "delete";
+    deleteButton.addEventListener("click", function(){
+        deleteTask(tasks, newTask);
+        li.remove();
+    });
+    return deleteButton;
+}
 form.addEventListener("submit", function(event){
     event.preventDefault();
 
@@ -48,20 +66,8 @@ form.addEventListener("submit", function(event){
         const newTask = addTask(tasks, task);
         const {li, span} = createTaskElement(newTask);
         
-        const completeButton = document.createElement("button");
-        completeButton.textContent = "complete";
-
-        completeButton.addEventListener("click", function(){
-            toggleTask(newTask);
-            updateTaskElement(newTask, span);
-        });
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "delete";
-        deleteButton.addEventListener("click", function(){
-           deleteTask(tasks, newTask);
-            li.remove();
-        });
+        const completeButton = createCompleteButton(newTask, span);
+        const deleteButton = createDeleteButton(tasks, newTask, li);
         
         li.append(completeButton);
         li.append(deleteButton);
